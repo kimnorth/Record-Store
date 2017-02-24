@@ -2,6 +2,14 @@
 
 <p>
   
-  <%= @all_albums %>
+  <% for album in @all_albums %>
+    <p>
+    Title: <%= p album.title %>
+    </p>
+    <p>
+    Quantity: <%= p album.quantity %>
+    </p>
+    <hr />
+  <% end %>
 
 </p>

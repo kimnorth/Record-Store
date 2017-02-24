@@ -7,8 +7,8 @@ class Album
 
   def initialize(options)
 
-    @title = options["title"]
-    @quantity = options["quantity"]
+    @title = options["title"].to_s
+    @quantity = options["quantity"].to_i
     @id = options["id"] if options["id"]
 
   end
