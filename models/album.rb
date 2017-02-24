@@ -25,4 +25,17 @@ class Album
 
   end
 
+  def return_quantity()
+
+    sql = "SELECT * FROM albums
+          WHERE id = #{@id};"
+
+    returned_album = SqlRunner.run(sql)
+    returned_album_object_in_array = returned_album.map {|album| Album.new(album)}
+    return returned_album_object_in_array.first.quantity
+
+  end
+
+  
+
 end
