@@ -22,7 +22,8 @@ class Artist
     returned_artist = SqlRunner.run(sql)
     artist_object = returned_artist.map {|artist| Artist.new(artist)}
     @id = artist_object.first.id
-
   end
+
+  
 
 end
