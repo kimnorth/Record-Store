@@ -2,13 +2,14 @@ require('PG')
 
 class SqlRunner
 
-  def run(sql)
+  def self.run(sql)
     begin
-      db = PG.connect({name: "music_store", host: "localhost"})
-      db.exec(sql)
+      db = PG.connect({dbname: "music_store", host: "localhost"})
+      result = db.exec(sql)
     ensure
-      db.close()
+      db.close
     end
+    return result
 
   end
 
