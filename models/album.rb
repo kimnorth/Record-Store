@@ -1,3 +1,5 @@
+require_relative('../db/sql_runner.rb')
+
 class Album
 
   attr_reader :id
@@ -26,14 +28,11 @@ class Album
   end
 
   def return_quantity()
-
     sql = "SELECT * FROM albums
           WHERE id = #{@id};"
-
     returned_album = SqlRunner.run(sql)
     returned_album_object_in_array = returned_album.map {|album| Album.new(album)}
     return returned_album_object_in_array.first.quantity
-
   end
 
   def self.return_all_stock()
@@ -48,9 +47,9 @@ class Album
     returned_albums = SqlRunner.run(sql)
     returned_album_objects_in_array = returned_albums.map {|album| Album.new(album)}
     total_stock = 0
-    for album in returned_album_objects_in_array
-      total_stock += album.quantity.to_i
-    end
+      for album in returned_album_objects_in_array
+        total_stock += album.quantity.to_i
+      end
     return total_stock
   end
 
