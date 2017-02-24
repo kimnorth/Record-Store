@@ -8,7 +8,7 @@ class Artist
   def initialize(options)
     @first_name = options["first_name"] 
     @last_name = options["last_name"]
-    @group_name = options["group_name"] if options["group_name"]
+    @group_name = options["group_name"] # if options["group_name"]
     @id = options["id"] if options["id"]
   end
 
