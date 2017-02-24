@@ -3,12 +3,25 @@
 <p>
   
   <% for album in @all_albums %>
-    <p>
-    Title: <%= p album.title %>
-    </p>
-    <p>
-    Quantity: <%= p album.quantity %>
-    </p>
+      <p>
+        Title: <%= album.title %>
+      </p>
+      <p>
+        Quantity: <%= album.quantity %>
+      </p>
+      <p>
+        Stock: 
+
+        <% if album.quantity.to_i <= 5 %>
+          <%= "LOW" %>
+        <% elsif album.quantity.to_i > 5 && album.quantity.to_i < 10 %>
+          <%= "Medium" %>
+        <% else %>
+          <%= "High" %>
+
+        <% end %>
+        
+      </p>
     <hr />
   <% end %>
 
