@@ -36,6 +36,13 @@ class Album
 
   end
 
+  def self.return_all_stock()
+    sql = "SELECT * FROM albums;"
+    returned_albums = SqlRunner.run(sql)
+    returned_albums_array = returned_albums.map {|album| Album.new(album)}
+    return returned_albums_array
+  end
+
   def self.return_all_stock_quantity()
     sql = "SELECT * FROM albums;"
     returned_albums = SqlRunner.run(sql)
