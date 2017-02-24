@@ -24,6 +24,10 @@ class Artist
     @id = artist_object.first.id
   end
 
-  
+  def self.delete_all()
+    sql = "DELETE FROM artists;"
+
+    SqlRunner.run(sql)
+  end
 
 end

@@ -37,9 +37,7 @@ class Album
   end
 
   def self.return_all_stock_quantity()
-
     sql = "SELECT * FROM albums;"
-
     returned_albums = SqlRunner.run(sql)
     returned_album_objects_in_array = returned_albums.map {|album| Album.new(album)}
     total_stock = 0
@@ -47,7 +45,11 @@ class Album
       total_stock += album.quantity.to_i
     end
     return total_stock
+  end
 
+  def self.delete_all()
+    sql = "DELETE FROM albums;"
+    SqlRunner.run(sql)
   end
 
 end
