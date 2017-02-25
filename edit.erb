@@ -1,0 +1,9 @@
+<label>
+  <select name="id">
+    <% for album in @album_array %>
+    <option value="<%= album.id %>"><%= album.title %></option> 
+    <% end %>
+  </select>
+</label>
+
+<!-- Drop down box -->
