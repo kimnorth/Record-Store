@@ -24,7 +24,6 @@ class Album
     returned_albums = SqlRunner.run(sql)
     album_object = returned_albums.map {|album| Album.new(album)}
     @id = album_object.first.id
-
   end
 
   def return_quantity()
@@ -56,6 +55,20 @@ class Album
   def self.delete_all()
     sql = "DELETE FROM albums;"
     SqlRunner.run(sql)
+  end
+
+  def delete()
+    sql = "DELETE FROM albums
+           WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
+
+  def find_by_id()
+    sql = "SELECT * FROM albums
+            WHERE id = #{@id};"
+    returned_albums = SqlRunner.run(sql)
+    returned_album_object_in_array = returned_albums.map {|album| Album.new(album)}
+    return returned_album_object_in_array.first
   end
 
 end

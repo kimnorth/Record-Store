@@ -5,6 +5,7 @@
 <p>
   
   <% for album in @all_albums %>
+      <% @album = album %>
       <p>
         Title: <%= album.title %>
       </p>
@@ -20,10 +21,21 @@
           <%= "Medium" %>
         <% else %>
           <%= "High" %>
-
         <% end %>
         
       </p>
+
+      <p>
+<!-- 
+        <a href="some_page">This is a regular link</a>
+ -->
+        
+        <form method="POST" action="/music-store/<%= @album.id %>/delete">
+          <input type="submit" value="Delete" />
+        </form>
+
+      </p>
+
     <hr />
   <% end %>
 

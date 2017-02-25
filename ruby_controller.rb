@@ -12,7 +12,6 @@ end
 # get the form back to make a new album
 
 get "/music-store/new" do
-  # @album_array = Album.return_all_stock()
   erb ( :new )
 end
 
@@ -23,3 +22,13 @@ post "/music-store" do
   @album.save()
   redirect to( "/music-store" )
 end
+
+# Delete album
+
+post "/music-store/:id/delete" do
+  @found_album = 
+  @album_to_delete = Album.new(@album)
+  @album_to_delete.delete()
+  redirect to( :index )  
+end
+
