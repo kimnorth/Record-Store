@@ -6,9 +6,7 @@ DROP TABLE IF EXISTS artists;
 
 CREATE TABLE artists (
   id SERIAL4 PRIMARY KEY,
-  first_name VARCHAR(255),
-  last_name VARCHAR(255),
-  group_name VARCHAR(255)
+  name VARCHAR(255)
 );
 
 CREATE TABLE albums (
@@ -17,5 +15,6 @@ CREATE TABLE albums (
   quantity INT4,
   id_artists INT4 REFERENCES artists(id)
 );
+
 
 

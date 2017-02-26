@@ -8,7 +8,7 @@ Album.delete_all()
 
 # Artists
 
-artist1 = Artist.new({"first_name" => "Iggy", "last_name" => "Pop"})
+artist1 = Artist.new({"name" => "Iggy Pop"})
 artist1.save()
 
 # Albums
