@@ -13,7 +13,7 @@ artist1.save()
 
 # Albums
 
-album1 = Album.new({"title" => "Lust For Life", "quantity" => 2, "id_artists" => artist1.id})
+album1 = Album.new({"title" => "Lust For Life", "quantity" => 2, "artist" => artist1.name, "id_artists" => artist1.id})
 album1.save()
 
 album2 = Album.new({"title" => "The Idiot", "quantity" => 1, "id_artists" => artist1.id})

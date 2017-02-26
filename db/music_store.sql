@@ -13,6 +13,7 @@ CREATE TABLE albums (
   id SERIAL4 PRIMARY KEY,
   title VARCHAR(255),
   quantity INT4,
+  artist VARCHAR(255),
   id_artists INT4 REFERENCES artists(id)
 );
 

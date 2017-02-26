@@ -6,7 +6,7 @@ class Artist
   attr_accessor :name
 
   def initialize(options)
-    @name = options["name"] if options["name"] # assigns a value if inputted
+    @name = options["name"] if options["name"].to_s # assigns a value if inputted
     @id = options["id"] if options["id"]
   end
 

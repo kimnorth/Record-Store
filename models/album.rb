@@ -3,12 +3,13 @@ require_relative('../db/sql_runner.rb')
 class Album
 
   attr_reader :id
-  attr_accessor :title, :quantity, :id_artists
+  attr_accessor :title, :quantity, :id_artists, :artist
 
   def initialize(options)
 
     @title = options["title"].to_s
     @quantity = options["quantity"].to_i
+    @artist = options["artist"].to_s
     @id_artists = options["id_artists"].to_i
     @id = options["id"] if options["id"]
     
@@ -18,9 +19,9 @@ class Album
   def save()
 
     sql = "INSERT INTO albums
-          (title, quantity, id_artists)
+          (title, quantity, artist, id_artists)
           VALUES
-          ('#{@title}', #{@quantity}, #{@id_artists})
+          ('#{@title}', #{@quantity}, '#{@artist}', #{@id_artists})
           RETURNING *;"
 
     returned_albums = SqlRunner.run(sql)
