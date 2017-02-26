@@ -63,9 +63,9 @@ class Album
     SqlRunner.run(sql)
   end
 
-  def find_by_id()
+  def self.find_by_id(album_id)
     sql = "SELECT * FROM albums
-            WHERE id = #{@id};"
+            WHERE id = #{album_id};"
     returned_albums = SqlRunner.run(sql)
     returned_album_object_in_array = returned_albums.map {|album| Album.new(album)}
     return returned_album_object_in_array.first

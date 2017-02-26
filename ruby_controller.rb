@@ -23,12 +23,10 @@ post "/music-store" do
   redirect to( "/music-store" )
 end
 
-# Delete album
+# Delete album - send post request
 
-post "/music-store/:id/delete" do
-  @found_album = 
-  @album_to_delete = Album.new(@album)
-  @album_to_delete.delete()
-  redirect to( :index )  
+get '/music-store/:id/delete' do #delete action
+  @album = Album.find_by_id(params[:id])
+  @album.delete
+  redirect to ('/music-store')
 end
-
