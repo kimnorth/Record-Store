@@ -13,8 +13,8 @@ class Album
     @artist = options["artist"].to_s
     @id_artists = options["id_artists"].to_i
     @id = options["id"] if options["id"]
-    @buy_price = 0
-    @sell_price = 0
+    @buy_price = options["buy_price"].to_i
+    @sell_price = options["sell_price"].to_i
 
   end
 
@@ -44,9 +44,9 @@ class Album
     if existing_artist != nil
       existing_artist_id = existing_artist.id
       sql = "INSERT INTO albums
-            (title, quantity, artist, id_artists)
+            (title, quantity, artist, id_artists, buy_price, sell_price)
             VALUES
-            ('#{@title}', #{@quantity}, '#{@artist}', #{existing_artist_id})
+            ('#{@title}', #{@quantity}, '#{@artist}', #{existing_artist_id}, #{@buy_price}, #{@sell_price})
             RETURNING *;"
 
       returned_albums = SqlRunner.run(sql)
@@ -71,9 +71,9 @@ class Album
       new_artist_id = artist_object.first.id
 
       sql_album = "INSERT INTO albums
-              (title, quantity, artist, id_artists)
+              (title, quantity, artist, id_artists, buy_price, sell_price)
               VALUES
-              ('#{@title}', #{@quantity}, '#{artist_name}', #{new_artist_id})
+              ('#{@title}', #{@quantity}, '#{artist_name}', #{new_artist_id}, #{@buy_price}, #{@sell_price})
               RETURNING *;"
 
       returned_albums = SqlRunner.run(sql_album)

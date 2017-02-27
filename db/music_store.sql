@@ -15,12 +15,14 @@ CREATE TABLE albums (
   title VARCHAR(255),
   quantity INT4,
   artist VARCHAR(255),
-  id_artists INT4 REFERENCES artists(id) ON DELETE CASCADE
-);
-
-CREATE TABLE price (
-  id SERIAL4 PRIMARY KEY,
-  album_id INT4 REFERENCES albums(id) ON DELETE CASCADE,
+  id_artists INT4 REFERENCES artists(id) ON DELETE CASCADE,
   buy_price INT4,
   sell_price INT4
 );
+
+-- CREATE TABLE price (
+--   id SERIAL4 PRIMARY KEY,
+--   album_id INT4 REFERENCES albums(id) ON DELETE CASCADE,
+--   buy_price INT4,
+--   sell_price INT4
+-- );

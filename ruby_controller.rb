@@ -10,6 +10,8 @@ get "/albums" do
   erb( :"albums/index" )
 end
 
+
+
 # NEW - get the form back to make a new album
 
 get "/albums/new" do
@@ -36,9 +38,10 @@ get '/albums/:id/delete' do #delete action
   redirect to ('/albums')
 end
 
-# Update price
+# Update price - GET form
 
 get '/albums/:id/price' do
   @album = Album.find_by_id(params[:id])
   erb ( :"albums/price" )
 end
+
