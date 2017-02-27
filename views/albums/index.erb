@@ -1,7 +1,42 @@
 <h1>Inventory</h1>
 
+<a href="/albums/new">Add Album</a>
+
 <p>
   
-  <%= @all_albums %>
+  <% for album in @all_albums %>
+      <% @album = album %>
+      <p>
+        Title: <%= album.title %>
+      </p>
+      <p>
+        Artist: <%= album.artist %>
+      </p>
+      <p>
+        Quantity: <%= album.quantity %>
+      </p>
+      <p>
+        Stock Level: 
+
+        <% if album.quantity.to_i <= 5 %>
+          <%= "LOW" %>
+        <% elsif album.quantity.to_i > 5 && album.quantity.to_i < 10 %>
+          <%= "Medium" %>
+        <% else %>
+          <%= "High" %>
+        <% end %>
+        
+      </p>
+
+      <p>
+
+        
+        <a href="/albums/<%= @album.id %>/delete">Delete Album</a>
+        
+
+      </p>
+
+    <hr />
+  <% end %>
 
 </p>

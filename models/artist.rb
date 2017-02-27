@@ -27,4 +27,17 @@ class Artist
     SqlRunner.run(sql)
   end
 
+  def self.find_by_name(find_name)
+    sql = "SELECT COUNT(*) FROM artists
+           WHERE name = '#{find_name}';"
+    result = SqlRunner.run(sql)
+
+    if result[0] == 0
+      artist_object = Artist.new(find_name)
+      return artist_object
+    end
+
+    return nil
+  end
+
 end

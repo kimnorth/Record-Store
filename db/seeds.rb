@@ -14,13 +14,13 @@ artist1.save()
 # Albums
 
 album1 = Album.new({"title" => "Lust For Life", "quantity" => 2, "artist" => artist1.name, "id_artists" => artist1.id})
-album1.save()
+album1.save(artist1.name)
 
-album2 = Album.new({"title" => "The Idiot", "quantity" => 1, "id_artists" => artist1.id})
-album2.save()
+album2 = Album.new({"title" => "The Idiot", "quantity" => 1, "artist" => artist1.name, "id_artists" => artist1.id})
+album2.save(artist1.name)
 
-album3 = Album.new({"title" => "Post Pop Depression", "quantity" => 20, "id_artists" => artist1.id})
-album3.save()
+album3 = Album.new({"title" => "Post Pop Depression", "quantity" => 20, "artist" => artist1.name, "id_artists" => artist1.id})
+album3.save(artist1.name)
 
 
 binding.pry

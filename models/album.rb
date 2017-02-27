@@ -1,9 +1,10 @@
 require_relative('../db/sql_runner.rb')
+require_relative('./artist.rb')
 
 class Album
 
   attr_reader :id
-  attr_accessor :title, :quantity, :id_artists, :artist
+  attr_accessor :title, :quantity, :id_artists, :artist, :artist_name
 
   def initialize(options)
 
@@ -12,22 +13,85 @@ class Album
     @artist = options["artist"].to_s
     @id_artists = options["id_artists"].to_i
     @id = options["id"] if options["id"]
+
+  end
+
+  def does_artist_exist?(artist_name) # string
+
+    sql = "SELECT * FROM artists
+           WHERE name = '#{artist_name}';"
+    returned_query = SqlRunner.run(sql)
+
+    if returned_query != nil
+      returned_artist_object = returned_query.map {|artist| Artist.new(artist)}
+      return returned_artist_object.first
+    else
+      return nil # explicit return - will return nil anyway
+    end
+  end
+
+
+
+  def save(artist_name) # CANNOT CREATE ALBUM WITHOUT AN ARTIST STRING AS ARGUMENT
+
+    # if artist exists use the id from that existing entry
+
+    existing_artist = does_artist_exist?(artist_name)
+    # puts existing_artist
+
+    if existing_artist != nil
+      existing_artist_id = existing_artist.id
+      sql = "INSERT INTO albums
+            (title, quantity, artist, id_artists)
+            VALUES
+            ('#{@title}', #{@quantity}, '#{@artist}', #{existing_artist_id})
+            RETURNING *;"
+
+      returned_albums = SqlRunner.run(sql)
+      album_object = returned_albums.map {|album| Album.new(album)}
+      @id = album_object.first.id
+      
+      # maybe this last bit can be outside loop for DRY reasons
+
+    else
+
+      # create an artist and then create an album and assign it that id
+
+      sql_artist = "INSERT INTO artists
+             (name)
+             VALUES
+             ('#{artist_name}') RETURNING *;"
+
+      # return new album to get id
+
+      new_artist = SqlRunner.run(sql_artist)
+      artist_object = new_artist.map {|artist| Artist.new(artist)}
+      new_artist_id = artist_object.first.id
+
+      sql_album = "INSERT INTO albums
+              (title, quantity, artist, id_artists)
+              VALUES
+              ('#{@title}', #{@quantity}, '#{artist_name}', #{new_artist_id})
+              RETURNING *;"
+
+      returned_albums = SqlRunner.run(sql_album)
+      album_object = returned_albums.map {|album| Album.new(album)}
+      @id = album_object.first.id
+
+    end
     
 
+    # use existing artist id
+
+    # else
+    # create a new artist, save it and use that artist.id
+
+    
   end
 
-  def save()
 
-    sql = "INSERT INTO albums
-          (title, quantity, artist, id_artists)
-          VALUES
-          ('#{@title}', #{@quantity}, '#{@artist}', #{@id_artists})
-          RETURNING *;"
 
-    returned_albums = SqlRunner.run(sql)
-    album_object = returned_albums.map {|album| Album.new(album)}
-    @id = album_object.first.id
-  end
+
 
   def return_quantity()
     sql = "SELECT * FROM albums
