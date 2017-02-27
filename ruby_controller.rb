@@ -36,8 +36,9 @@ get '/albums/:id/delete' do #delete action
   redirect to ('/albums')
 end
 
-# SUBMIT new artist
+# Update price
 
-
-
-# CURRENTLY - not submitting any information back to the table when I add an new artist - just creating an entry and that's it.
+get '/albums/:id/price' do
+  @album = Album.find_by_id(params[:id])
+  erb ( :"albums/price" )
+end

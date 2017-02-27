@@ -4,7 +4,7 @@ require_relative('./artist.rb')
 class Album
 
   attr_reader :id
-  attr_accessor :title, :quantity, :id_artists, :artist, :artist_name
+  attr_accessor :title, :quantity, :id_artists, :artist, :buy_price, :sell_price
 
   def initialize(options)
 
@@ -13,6 +13,8 @@ class Album
     @artist = options["artist"].to_s
     @id_artists = options["id_artists"].to_i
     @id = options["id"] if options["id"]
+    @buy_price = 0
+    @sell_price = 0
 
   end
 
