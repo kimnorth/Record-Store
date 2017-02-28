@@ -13,6 +13,7 @@ end
 # NEW - get the form back to make a new album
 
 get "/albums/new" do
+  @all_genres = Genre.all()
   erb ( :"albums/new" )
 end
 

@@ -1,14 +1,19 @@
 require('pry')
 require_relative('../models/artist.rb')
 require_relative('../models/album.rb')
-# require_relative('../models/artists_with_albums.rb')
+require_relative('../models/genres.rb')
 
 Artist.delete_all()
 Album.delete_all()
+Genre.delete_all()
+# Genres
+
+genre1 = Genre.new({"name" => "Classic Rock"})
+genre1.save()
 
 # Artists
 
-artist1 = Artist.new({"name" => "Iggy Pop"})
+artist1 = Artist.new({"name" => "Iggy Pop", "genre_id" => genre1.id})
 artist1.save()
 
 # Albums

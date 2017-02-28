@@ -1,13 +1,16 @@
--- DROP TABLE IF EXISTS artists_with_albums;
-
-DROP TABLE IF EXISTS price;
 DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS artists;
+DROP TABLE IF EXISTS genres;
 
+CREATE TABLE genres (
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(255) 
+);
 
 CREATE TABLE artists (
   id SERIAL4 PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255),
+  genre_id INT4 REFERENCES genres(id) ON DELETE CASCADE
 );
 
 CREATE TABLE albums (
@@ -20,9 +23,3 @@ CREATE TABLE albums (
   sell_price INT4
 );
 
--- CREATE TABLE price (
---   id SERIAL4 PRIMARY KEY,
---   album_id INT4 REFERENCES albums(id) ON DELETE CASCADE,
---   buy_price INT4,
---   sell_price INT4
--- );

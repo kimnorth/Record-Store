@@ -3,11 +3,12 @@ require_relative('../db/sql_runner.rb')
 class Artist
 
   attr_reader :id
-  attr_accessor :name
+  attr_accessor :name, :genre_id
 
   def initialize(options)
     @name = options["name"] if options["name"].to_s # assigns a value if inputted
     @id = options["id"] if options["id"]
+    @genre_id = options["genre_id"] if options["genre_id"]
   end
 
   def save()
