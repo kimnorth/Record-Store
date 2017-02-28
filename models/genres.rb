@@ -21,6 +21,7 @@ class Genre
 
     returned_sql_object = SqlRunner.run(sql)
     genre_object_array = returned_sql_object.map {|genre| Genre.new(genre)}
+    p genre_object_array
     @id = genre_object_array.first.id
 
   end

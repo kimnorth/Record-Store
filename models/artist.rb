@@ -6,16 +6,16 @@ class Artist
   attr_accessor :name, :genre_id
 
   def initialize(options)
-    @name = options["name"] if options["name"].to_s # assigns a value if inputted
+    @name = options["name"].to_s # assigns a value if inputted
     @id = options["id"] if options["id"]
-    @genre_id = options["genre_id"] if options["genre_id"]
+    @genre_id = options["genre_id"].to_i
   end
 
   def save()
     sql = "INSERT INTO artists
-          (name)
+          (name, genre_id)
           VALUES
-          ('#{@name}')
+          ('#{@name}', #{@genre_id})
           RETURNING *;"
 
     returned_artist = SqlRunner.run(sql)

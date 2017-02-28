@@ -2,6 +2,7 @@ require('sinatra')
 require('sinatra/contrib/all')
 require_relative('./models/album.rb')
 require_relative('./models/artist.rb')
+require_relative('./models/genres.rb')
 
 # READ - Display all stock
 
@@ -40,7 +41,6 @@ end
 
 get '/albums/:id/edit' do
   @album = Album.find_by_id(params[:id])
-  p @album
   erb ( :"albums/edit" )
 end
 
@@ -48,11 +48,15 @@ end
 
 post '/albums/update' do
   updated_album = Album.new(params)
-  p updated_album
   updated_album.update()
   redirect to('/albums')
 end
 
 # can't post back to /albums because that won't update - already a unique route
 
-#<Album:0x007f94fe9004d0 @title="", @quantity=100, @artist="", @id_artists=0, @buy_price=1000, @sell_price=1001>
+# GET - view artists
+
+get '/artists' do
+  @all_genres = Genre.all()
+  erb ( :"artists/index" )
+end

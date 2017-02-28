@@ -11,6 +11,9 @@ Genre.delete_all()
 genre1 = Genre.new({"name" => "Classic Rock"})
 genre1.save()
 
+genre2 = Genre.new({"name" => "Hip Hop"})
+genre2.save()
+
 # Artists
 
 artist1 = Artist.new({"name" => "Iggy Pop", "genre_id" => genre1.id})
