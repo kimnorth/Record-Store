@@ -1,0 +1,13 @@
+<h1>Genres</h1>
+
+<a href="/genres/new">Add Genre</a>
+
+<% for genre in @all_genres %>    
+    <ul>
+      <li><%= genre.name %></li>
+      <li><a href="/genre/delete">Delete</a></li>
+      <li><a href="/genre/edit">Update</a></li>
+      </ul>
+
+  <hr />
+<% end %>

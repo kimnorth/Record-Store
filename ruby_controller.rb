@@ -60,3 +60,10 @@ get '/artists' do
   @all_genres = Genre.all()
   erb ( :"artists/index" )
 end
+
+# GET - view genres
+
+get '/genres' do
+  @all_genres = Genre.all()
+  erb ( :"genres/index" )
+end
