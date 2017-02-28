@@ -20,11 +20,17 @@
 <label>Genre:
   <select name="genre">
     <% for genre in @all_genres %>
-      <option value="<%= genre %>"><%= genre.name %></option> 
+      <option value="<%= genre.name %>"><%= genre.name %></option> 
     <% end %>
   </select>
 </label>
 
+</p>
+
+<p>
+  <!-- 
+  <input type="hidden" value="<%= genre.id %>" name="genre_id" />
+ -->
 </p>
 
 <label for="quantity">Quantity: </label>

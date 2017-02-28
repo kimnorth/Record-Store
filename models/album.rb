@@ -35,7 +35,7 @@ class Album
 
 
 
-  def save(artist_name, genre_id) # CANNOT CREATE ALBUM WITHOUT AN ARTIST STRING AS ARGUMENT
+  def save(artist_name, genre_id)
 
     # if artist exists use the id from that existing entry
 
@@ -62,7 +62,7 @@ class Album
       sql_artist = "INSERT INTO artists
              (name, genre_id)
              VALUES
-             ('#{artist_name}, #{genre_id}') RETURNING *;"
+             ('#{artist_name}', #{genre_id}) RETURNING *;"
 
       new_artist = SqlRunner.run(sql_artist)
       artist_object = new_artist.map {|artist| Artist.new(artist)}

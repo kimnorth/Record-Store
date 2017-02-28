@@ -42,4 +42,13 @@ class Genre
   
   end
 
+  def self.find_by_name(genre_name)
+    sql = "SELECT * FROM genres
+          WHERE name = '#{genre_name}';"
+
+    returned_sql_object = SqlRunner.run(sql) 
+    genre_object_array = returned_sql_object.map {|genre| Genre.new(genre)}
+    return genre_object_array.first
+  end
+
 end

@@ -1,8 +1,8 @@
 require('sinatra')
 require('sinatra/contrib/all')
-require_relative('./models/album.rb')
-require_relative('./models/artist.rb')
-require_relative('./models/genres.rb')
+require_relative('../models/album.rb')
+require_relative('../models/artist.rb')
+require_relative('../models/genres.rb')
 
 # READ - Display all stock
 
@@ -25,7 +25,8 @@ end
 
 post "/albums" do
   album = Album.new(params)
-  album.save(params["artist"], params["genre_id"])
+  genre_object = Genre.find_by_name(params["genre"])
+  album.save(params["artist"], genre_object.id)
   redirect to( "/albums" )
 end
 
