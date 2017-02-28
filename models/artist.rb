@@ -28,6 +28,13 @@ class Artist
     SqlRunner.run(sql)
   end
 
+  def self.all()
+    sql = "SELECT * FROM artists;"
+    returned_sql_object = SqlRunner.run(sql)
+    artist_object_array = returned_sql_object.map {|artist| Artist.new(artist)}
+    return artist_object_array
+  end
+
   def self.find_by_name(find_name)
     sql = "SELECT COUNT(*) FROM artists
            WHERE name = '#{find_name}';"
@@ -37,7 +44,6 @@ class Artist
       artist_object = Artist.new(find_name)
       return artist_object
     end
-
     return nil
   end
 
