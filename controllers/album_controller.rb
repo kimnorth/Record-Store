@@ -57,5 +57,6 @@ end
 
 get '/artists' do
   @all_artists = Artist.all()
+  @all_genres = Genre.all()
   erb ( :"artists/index" )
 end

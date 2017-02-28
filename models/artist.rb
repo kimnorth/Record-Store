@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('./artists_with_genres.rb')
 
 class Artist
 
@@ -46,5 +47,17 @@ class Artist
     end
     return nil
   end
+
+  # def self.artist_with_genre() 
+  
+  #   sql = "SELECT artists.name AS Artist, genres.name AS Genre 
+  #          FROM genres 
+  #          INNER JOIN artists 
+  #          ON genres.id = artists.genre_id;"
+
+  #   returned_sql_object = SqlRunner.run(sql)
+  #   return returned_sql_object    
+  
+  # end
 
 end

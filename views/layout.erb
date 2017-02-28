@@ -6,15 +6,18 @@
   
     <title>Big Al's Music Store</title>
     
+    <link rel="stylesheet" type="text/css" href="navbar.css" />
     <link rel="stylesheet" type="text/css" href="inventory.css" />
-  
+    
   </head>
 
   <body>
-
-  <a href="/albums">Inventory</a>
-  <a href="/artists">View Artists</a>
-  <a href="/search">Search</a>
+  
+  <div id="navbar">
+      <a class="navlink" href="/albums">Inventory</a>
+      <a class="navlink" href="/artists">View Artists</a>
+      <a class="navlink" href="/search">Search</a>
+  </div>
 
     <%= yield %>
 
