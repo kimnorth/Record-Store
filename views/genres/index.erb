@@ -5,7 +5,7 @@
 <% for genre in @all_genres %>    
     <ul>
       <li><%= genre.name %></li>
-      <li><a href="/genres/delete">Delete</a></li>
+      <li><a href="/genres/<%= genre.id %>/delete">Delete</a></li>
       <li><a href="/genres/edit">Update</a></li>
     </ul>
 

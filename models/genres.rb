@@ -42,6 +42,15 @@ class Genre
   
   end
 
+  def self.find_by_id(query_id)
+    sql = "SELECT * FROM genres
+           WHERE id = #{query_id};"
+
+    returned_sql_object = SqlRunner.run(sql)
+    genre_object_array = returned_sql_object.map {|genre| Genre.new(genre)}
+    return genre_object_array.first
+  end
+
   def self.find_by_name(genre_name)
     sql = "SELECT * FROM genres
           WHERE name = '#{genre_name}';"
@@ -49,6 +58,13 @@ class Genre
     returned_sql_object = SqlRunner.run(sql) 
     genre_object_array = returned_sql_object.map {|genre| Genre.new(genre)}
     return genre_object_array.first
+  end
+
+  def delete()
+    sql = "DELETE FROM genres
+           WHERE id = #{@id};"
+    SqlRunner.run(sql)
+
   end
 
 end
