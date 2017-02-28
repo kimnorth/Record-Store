@@ -25,7 +25,7 @@ end
 
 post "/albums" do
   album = Album.new(params)
-  album.save(params["artist"])
+  album.save(params["artist"], params["genre_id"])
   redirect to( "/albums" )
 end
 

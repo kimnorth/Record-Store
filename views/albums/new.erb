@@ -15,7 +15,17 @@
   <input type="text" id="artist" name="artist" />
 </p>
 
-<p>
+<p> 
+
+<label>Genre:
+  <select name="genre">
+    <% for genre in @all_genres %>
+      <option value="<%= genre %>"><%= genre.name %></option> 
+    <% end %>
+  </select>
+</label>
+
+</p>
 
 <label for="quantity">Quantity: </label>
   <input type="number" id="quantity" name="quantity" />
