@@ -30,6 +30,7 @@ class Album
     else
       return nil # explicit return - will return nil anyway
     end
+
   end
 
 
@@ -39,7 +40,6 @@ class Album
     # if artist exists use the id from that existing entry
 
     existing_artist = does_artist_exist?(artist_name)
-    # puts existing_artist
 
     if existing_artist != nil
       existing_artist_id = existing_artist.id
@@ -64,8 +64,6 @@ class Album
              VALUES
              ('#{artist_name}') RETURNING *;"
 
-      # return new album to get id
-
       new_artist = SqlRunner.run(sql_artist)
       artist_object = new_artist.map {|artist| Artist.new(artist)}
       new_artist_id = artist_object.first.id
@@ -82,18 +80,7 @@ class Album
 
     end
     
-
-    # use existing artist id
-
-    # else
-    # create a new artist, save it and use that artist.id
-
-    
   end
-
-
-
-
 
   def return_quantity()
     sql = "SELECT * FROM albums
@@ -140,5 +127,16 @@ class Album
     return returned_album_object_in_array.first
   end
 
+  def update()
+    
+    sql = "UPDATE albums SET
+          (title, quantity, artist, id_artists, buy_price, sell_price)
+          =
+          ('#{@title}', #{@quantity}, '#{@artist}', #{@id_artists}, #{@buy_price}, #{@sell_price})
+          WHERE id = #{@id};"
+
+    SqlRunner.run(sql)
+  
+  end
  
 end
