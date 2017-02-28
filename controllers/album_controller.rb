@@ -55,16 +55,7 @@ end
 
 # can't post back to /albums because that won't update - already a unique route
 
-# GET - view artists
-
 get '/artists' do
-  @all_genres = Genre.all()
+  @all_artists = Artist.all()
   erb ( :"artists/index" )
-end
-
-# GET - view genres
-
-get '/genres' do
-  @all_genres = Genre.all()
-  erb ( :"genres/index" )
 end

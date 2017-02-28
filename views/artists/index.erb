@@ -2,28 +2,10 @@
 
 <p>
 
-<% for album in @all_albums %>
-    <% @album = album %>
+<% for artist in @all_artists %>
     <ul>
-      <li>Title: <%= album.title %></li>--     
-      <li>Artist: <%= album.artist %></li>--
-      <li>Quantity: <%= album.quantity %></li>--
-      <li>Stock Level: 
-
-      <% if album.quantity.to_i <= 5 %>
-        <%= "LOW" %>
-      <% elsif album.quantity.to_i > 5 && album.quantity.to_i < 10 %>
-        <%= "Medium" %>
-      <% else %>
-        <%= "High" %>
-      <% end %>
-      </li>--
-      <li>Buy Price: <%= album.buy_price %></li>
-      <li>Sell Price: <%= album.sell_price %></li>
-      <li><a href="/albums/<%= @album.id %>/delete">Delete</a></li>
-      <li><a href="/albums/<%= @album.id %>/edit">Update</a></li>
-      </ul>
-
+      <li>Name: <%= artist.name %></li>
+    </ul>
   <hr />
 <% end %>
 

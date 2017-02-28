@@ -2,12 +2,16 @@ require('sinatra')
 require('sinatra/contrib/all')
 require_relative('../models/artist.rb')
 
-# READ
+# GET - view artists
 
-get '/artists' do
-  @all_artists = Artist.all()
-  erb ( :"artists/index" )
-end
+
+
+# # GET - view genres
+
+# get '/genres' do
+#   @all_genres = Genre.all()
+#   erb ( :"genres/index" )
+# end
 
 # NEW
 

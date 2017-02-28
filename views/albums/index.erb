@@ -4,7 +4,7 @@
 <p>
   
   <% for album in @all_albums %>
-      <% @album = album %>
+      
       <ul>
         <li>Title: <%= album.title %></li>--     
         <li>Artist: <%= album.artist %></li>--
@@ -21,8 +21,8 @@
         </li>--
         <li>Buy Price: <%= album.buy_price %></li>
         <li>Sell Price: <%= album.sell_price %></li>
-        <li><a href="/albums/<%= @album.id %>/delete">Delete</a></li>
-        <li><a href="/albums/<%= @album.id %>/edit">Update</a></li>
+        <li><a href="/albums/<%= album.id %>/delete">Delete</a></li>
+        <li><a href="/albums/<%= album.id %>/edit">Update</a></li>
         </ul>
 
     <hr />
