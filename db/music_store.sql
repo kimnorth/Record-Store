@@ -23,4 +23,3 @@ CREATE TABLE albums (
   sell_price INT4
 );
 
-

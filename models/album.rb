@@ -138,5 +138,15 @@ class Album
     SqlRunner.run(sql)
   
   end
+
+  def self.find_by_name(name)
+    sql = "SELECT * FROM albums
+           where title = '#{name}';"
+    
+    returned_albums = SqlRunner.run(sql)
+    returned_album_objects_in_array = returned_albums.map {|album| Album.new(album)}
+    return returned_album_objects_in_array
+  
+  end
  
 end
