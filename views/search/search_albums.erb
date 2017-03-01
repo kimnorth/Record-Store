@@ -1,5 +1,11 @@
 <h1>Search Results</h1>
 
+<% if @found_albums.length == 0 %>
+
+  <p><%= Not Found %></p>
+
+<% end %>
+
 <% for album in @found_albums %>
     
     <ul>

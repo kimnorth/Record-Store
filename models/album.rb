@@ -154,7 +154,7 @@ class Album
     sql = "SELECT * FROM albums
            WHERE artist = '#{name}';"
 
-    query_return = SqlRunner.run(sql)
+    query_return = SqlRunner.run(sql) 
     artist_object_array = query_return.map {|album| Album.new(album)}
     return artist_object_array
 
