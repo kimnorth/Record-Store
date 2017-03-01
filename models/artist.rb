@@ -48,6 +48,8 @@ class Artist
     return nil
   end
 
+ 
+
   # def self.artist_with_genre() 
   
   #   sql = "SELECT artists.name AS Artist, genres.name AS Genre 

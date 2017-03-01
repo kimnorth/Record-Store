@@ -148,5 +148,16 @@ class Album
     return returned_album_objects_in_array
   
   end
+
+  def self.find_album_by_artist(name)
+
+    sql = "SELECT * FROM albums
+           WHERE artist = '#{name}';"
+
+    query_return = SqlRunner.run(sql)
+    artist_object_array = query_return.map {|album| Album.new(album)}
+    return artist_object_array
+
+  end
  
 end

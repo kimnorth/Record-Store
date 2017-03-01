@@ -1,6 +1,5 @@
 require('sinatra')
 require('sinatra/contrib/all')
-require_relative('../models/artist.rb')
 require_relative('../models/album.rb')
 
 # Get all artists
@@ -11,6 +10,8 @@ get '/search/search_albums' do
 end
 
 get '/search/search_artists' do
-  @found_albums = Artists.find_by_name(params["name"])
+  puts params
+  @found_albums = Album.find_album_by_artist(params["artist"])
+  puts @found_albums
   erb (:"search/search_artists")
 end
