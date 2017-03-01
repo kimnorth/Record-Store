@@ -3,6 +3,7 @@ require('sinatra/contrib/all')
 require_relative('../models/album.rb')
 require_relative('../models/artist.rb')
 require_relative('../models/genres.rb')
+require_relative('../titleize.rb')
 
 # READ - Display all stock
 
@@ -24,6 +25,8 @@ end
 # 2. if artist does exist, create a new album and assign the id from the existing artist, then save
 
 post "/albums" do
+  params["title"] = params["title"].downcase.titleize
+  params["artist"] = params["artist"].downcase.titleize
   album = Album.new(params)
   genre_object = Genre.find_by_name(params["genre"])
   album.save(params["artist"], genre_object.id)
@@ -33,8 +36,8 @@ end
 # Delete album - 
 
 get '/albums/:id/delete' do #delete action
-  @album = Album.find_by_id(params[:id])
-  @album.delete
+  album = Album.find_by_id(params[:id])
+  album.delete
   redirect to ('/albums')
 end
 
